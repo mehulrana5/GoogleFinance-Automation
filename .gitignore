@@ -1,0 +1,5 @@
+venv
+ISIN_TO_SYMBOL.json
+.env
+~$data.xlsx
+chromedriver.exe
