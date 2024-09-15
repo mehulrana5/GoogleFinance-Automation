@@ -37,14 +37,17 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-### 7. Configure Environment Variables
+### 7. Download and Configure ChromeDriver
+Go to [ChromeDriver download page](https://googlechromelabs.github.io/chrome-for-testing/#stable) to download the `chromedriver` that is compatible with your version of Google Chrome. Extract the `chromedriver.exe` file from the zip file and move it to the `./GoogleFinance-Automation` directory.
+
+### 8. Configure Environment Variables
 Create a `.env` file in the project root directory, and add your Google Finance login credentials (If you face an issue while login then create a new acc):
 ```bash
 GF_EMAIL="your_google_finance_email"
 GF_PW="your_google_finance_password"
 ```
 
-### 8. Run the Automation Script
+### 9. Run the Automation Script
 ```bash
 python .\main.py
 ```
