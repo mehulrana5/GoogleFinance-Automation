@@ -281,14 +281,16 @@ def extract_data_from_excel(filename):
         print(f"An error occurred: {e}")
 
 if __name__=='__main__':
+    basket_name=input("enter basket name:")
+    if basket_name=='':basket_name="portfolio 1"
     service = Service(executable_path=chrome_driver_path)
     driver = webdriver.Chrome(service=service,options=chrome_options)
     a=extract_data_from_excel("data.xlsx")
     buy_trades=a[0]
     sell_trades=a[1]
     gf_open(driver,cookies_path)
-    create_gf_basket(driver,"portfolio 1")
-    open_gf_basket(driver,'portfolio 1')
+    create_gf_basket(driver,basket_name)
+    open_gf_basket(driver,basket_name)
     add_stocks_to_basket(driver,buy_trades[0],buy_trades[1],buy_trades[2],buy_trades[3])
     # sell_stocks_from_basket(driver,sell_trades[0],sell_trades[1],sell_trades[2],sell_trades[3],sell_trades[4],sell_trades[5])
     driver.quit()
