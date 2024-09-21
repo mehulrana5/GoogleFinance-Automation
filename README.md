@@ -1,5 +1,8 @@
 # Google Finance Automation
 
+## Demo
+[Watch the demo video on Reddit](https://www.reddit.com/r/developersIndia/comments/1flza04/automated_google_finance_portfolio_management/)
+
 ## Setup Instructions
 
 ### 1. Clone the Repository
