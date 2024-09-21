@@ -15,7 +15,9 @@ cd ./GoogleFinance-Automation
 ```
 
 ### 3. Update data.xlsx
-Open the data.xlsx file (located in the project folder) outside of VSCode (e.g., in Excel). Update it with your data and save the changes.
+  1. Downnload your portfolio report from your broker app
+  2. Open the data.xlsx file (located in the project folder) outside of VSCode (e.g., in Excel). Update it with your data and save the changes.
+  3. Close the excel file
 
 ### 4. Set Up a Virtual Environment
 ```bash

@@ -5,7 +5,6 @@ import json
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
-load_dotenv()
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -13,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
+load_dotenv()
 
 url2="https://www.google.com/finance/?hl=en&authuser=5"
 GF_EMAIL=os.getenv('GF_EMAIL')
@@ -45,15 +45,21 @@ def export_json_data(path, data):
         json.dump(data, file, indent=4)
 
 def wait_and_send_keys(driver, locator, keys):
-    element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(locator))
-    element.clear()
-    element.send_keys(keys)
-    time.sleep(.5)
+    try:
+        element = WebDriverWait(driver, 10).until(EC.presence_of_element_located(locator))
+        element.clear()
+        element.send_keys(keys)
+        time.sleep(.5)
+    except Exception as e:
+        print(e)
 
 def wait_and_click(driver, locator):
-    element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(locator))
-    element.click()
-    time.sleep(.5)
+    try:
+        element = WebDriverWait(driver, 10).until(EC.element_to_be_clickable(locator))
+        element.click()
+        time.sleep(.5)
+    except Exception as e:
+            print(e)
 
 def gf_login(driver,cookies_path):
     driver.get(url2)
@@ -139,6 +145,7 @@ def add_stocks_to_basket(driver,tickers, qtys, dates,prices=[None]):
     crt=len(tickers)
     for ticker,qty,date,price in zip(tickers, qtys, dates,prices): 
         wait_and_send_keys(driver,(By.CSS_SELECTOR,search_stock),ticker)
+        time.sleep(.5)
         wait_and_click(driver,(By.CSS_SELECTOR,choice_1))
         wait_and_send_keys(driver,(By.CSS_SELECTOR,qty_btn),qty)
         wait_and_send_keys(driver,(By.CSS_SELECTOR,date_btn),date)
