@@ -89,8 +89,8 @@ def gf_open(driver,cookies_path):
 def create_gf_basket(driver, name):
     create_btn = '//*[@id="yDmH0d"]/c-wiz[2]/div/div[4]/div/div/div[2]/c-wiz[1]/div/div/div[5]/div/div/button/span'
     create_btn2 = '//*[@id="yDmH0d"]/c-wiz[2]/div/div[4]/div/div/div[2]/c-wiz[1]/div/div/div[2]/div/button/span'
-    input_name = '/html/body/div[11]/div[2]/div/div[1]/div/div[2]/label/input'
-    save_btn = '/html/body/div[11]/div[2]/div/div[2]/div/div[2]/button'
+    input_name = '#yDmH0d > div > div > div > div > div > div > label > input'
+    save_btn = '#yDmH0d > div > div > div > div > div > div:nth-child(2) > button'
     driver.get(url2)
     
     def is_element_visible(xpath):
@@ -107,22 +107,22 @@ def create_gf_basket(driver, name):
     
     wait_and_click(driver, (By.XPATH, btn_xpath))
     time.sleep(1)
-    wait_and_click(driver, (By.XPATH, input_name))
-    wait_and_send_keys(driver, (By.XPATH, input_name), name)
-    wait_and_click(driver, (By.XPATH, save_btn))
+    wait_and_click(driver, (By.CSS_SELECTOR, input_name))
+    wait_and_send_keys(driver, (By.CSS_SELECTOR, input_name), name)
+    wait_and_click(driver, (By.CSS_SELECTOR, save_btn))
     time.sleep(5)
 
 def add_stocks_to_basket(driver,tickers, qtys, dates,prices=[None]):
     
-    b1='#yDmH0d > c-wiz.zQTmif.SSPGKf.yd8gve > div > c-wiz > div.e1AOyf > div > div:nth-child(2) > div > div > c-wiz > div > div > div.T7rHJe > div > div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb > button'
+    b1='#yDmH0d > c-wiz > div > c-wiz > div > div > div:nth-child(2) > div > div > c-wiz > div > div > div > div > div > button'
 
-    b2='#yDmH0d div > c-wiz > div.e1AOyf > div > div:nth-child(2) > div > div > c-wiz > div > div > div > div > div.VfPpkd-dgl2Hf-ppHlrf-sM5MNb > button > span'
+    b2='#yDmH0d div > c-wiz > div > div > div:nth-child(2) > div > div > c-wiz > div > div > div > div > div > button > span'
 
-    search_stock='#yDmH0d > div.VfPpkd-Sx9Kwc.cC1eCc.UDxLd.PzCPDd.OHihnb.VfPpkd-Sx9Kwc-OWXEXe-FNFY6c > div.VfPpkd-wzTsW > div > div.VfPpkd-cnG4Wd > div > div:nth-child(2) > div > div > div > div.d1dlne > input.Ax4B8.ZAGvjd'
+    search_stock='#yDmH0d > div > div > div > div > div > div:nth-child(2) > div > div > div > div > input'
 
-    choice_1 = '#yDmH0d > div.VfPpkd-Sx9Kwc.cC1eCc.UDxLd.PzCPDd.OHihnb.VfPpkd-Sx9Kwc-OWXEXe-FNFY6c > div.VfPpkd-wzTsW > div > div.VfPpkd-cnG4Wd > div > div:nth-child(2) > div > div > div > div:nth-child(2) > div > div > div > div:nth-child(3) > div:nth-child(1)'
+    choice_1 = '#yDmH0d > div > div > div > div > div > div:nth-child(2) > div > div > div > div:nth-child(2) > div > div > div > div:nth-child(3) > div:nth-child(1)'
 
-    common_selector='#yDmH0d > div.VfPpkd-Sx9Kwc.cC1eCc.UDxLd.PzCPDd.OHihnb.VfPpkd-Sx9Kwc-OWXEXe-FNFY6c > div.VfPpkd-wzTsW > div > div.VfPpkd-cnG4Wd > div > div:nth-child(3) > div:nth-child(1) >'
+    common_selector='#yDmH0d > div > div > div > div > div > div:nth-child(3) > div:nth-child(1) >'
     
     qty_btn=f'{common_selector} div > div:nth-child(1) > div > div > div > label > input'
 
@@ -130,9 +130,9 @@ def add_stocks_to_basket(driver,tickers, qtys, dates,prices=[None]):
 
     price_btn=f'{common_selector} div > div:nth-child(3) > div > label > input'
 
-    addMore_btn=f'#yDmH0d > div.VfPpkd-Sx9Kwc.cC1eCc.UDxLd.PzCPDd.OHihnb.VfPpkd-Sx9Kwc-OWXEXe-FNFY6c > div.VfPpkd-wzTsW > div > div.VfPpkd-T0kwCb > div > div:nth-child(2) > button'
+    addMore_btn=f'#yDmH0d > div > div > div > div > div > div:nth-child(2) > button'
     
-    save_btn=f'#yDmH0d > div.VfPpkd-Sx9Kwc.cC1eCc.UDxLd.PzCPDd.OHihnb.VfPpkd-Sx9Kwc-OWXEXe-FNFY6c > div.VfPpkd-wzTsW > div > div.VfPpkd-T0kwCb > div > div:nth-child(3) > button'
+    save_btn=f'#yDmH0d > div > div > div > div > div > div:nth-child(3) > button'
 
     highlight='/html/body/c-wiz[3]/div/c-wiz/div[2]/div/div[1]/div[2]/div[2]/div'
 
@@ -170,7 +170,7 @@ def sell_stocks_from_basket(driver,tickers, dates1, prices1, qtys, dates2, price
 
 def open_gf_basket(driver,bname):
     driver.get(url2)
-    name='#yDmH0d > c-wiz.zQTmif.SSPGKf.ccEnac > div > div.e1AOyf > div > div > div.OFJocd > c-wiz:nth-child(1) > div > div > ul > li'
+    name='#yDmH0d > c-wiz > div > div > div > div > div.OFJocd > c-wiz:nth-child(1) > div > div > ul > li'
 
     n=len(driver.find_elements(By.CSS_SELECTOR,name))
     time.sleep(1)
